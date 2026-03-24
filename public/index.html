@@ -14,6 +14,7 @@
  <script src="assets/js/jquery.bootstrap-growl.min.js"></script>
  <script src="assets/js/select2.min.js"></script>
  <script src="assets/js/picoreflow.js"></script>
+ <script src="assets/js/kiln-scheduler.js"></script>
 
  <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
  <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css"/>
@@ -64,6 +65,21 @@
      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#jobSummaryModal"><span class="glyphicon glyphicon-play"></span> Start</button>
     </div>
     <button id="nav_stop" type="button" class="btn btn-danger" onclick="abortTask()" style="display:none" ><span class="glyphicon glyphicon-stop"></span> Stop</button>
+
+    <!-- Scheduling controls (single scheduled run; overwrite protection) -->
+    <div id="nav_schedule" style="display:inline-block; margin-left: 10px; vertical-align: top;">
+     <div style="white-space: nowrap;">
+      <input id="schedule_date" type="date" class="form-control" title="Start date" style="width: 155px; display:inline-block; vertical-align: middle;"> <input id="schedule_time" type="time" class="form-control" title="Start time" style="width: 120px; display:inline-block; vertical-align: middle; margin-left: 4px;">
+      <button id="btn_schedule" type="button" class="btn btn-primary" style="vertical-align: middle; margin-left: 4px;" onclick="kcScheduleRun()">
+       <span class="glyphicon glyphicon-time"></span> Schedule
+      </button>
+      <button id="btn_schedule_cancel" type="button" class="btn btn-warning" style="vertical-align: middle; margin-left: 4px; display:none;" onclick="kcCancelSchedule()">
+       <span class="glyphicon glyphicon-remove"></span> Cancel
+      </button>
+     </div>
+     <div id="schedule_status_text" style="font-size: 12px; color: #666; margin-top: 4px;"></div>
+    </div>
+
    </div>
     <div id="edit" style="display:none;">
      <div class="input-group">
