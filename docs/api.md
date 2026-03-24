@@ -26,3 +26,15 @@ pause a run (maintain current temperature until resume)
 resume a paused run
     
     curl -d '{"cmd":"resume"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:8081/api
+
+schedule a run (date + time) (overwrites any existing scheduled run)
+
+    curl -d '{"cmd":"schedule", "profile":"cone-05-long-bisque", "date":"2026-03-28", "time":"05:00"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:8081/api
+
+get scheduled run status
+
+    curl -d '{"cmd":"schedule_status"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:8081/api
+
+cancel scheduled run
+
+    curl -d '{"cmd":"schedule_cancel"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:8081/api
