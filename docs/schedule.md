@@ -3,12 +3,27 @@ Scheduling a Kiln Run
 
 Our lives are busy. Sometimes you'll want your kiln to start at a scheduled time. This is really easy to do with the **at** command. Scheduled events persist if the raspberry pi reboots.
 
+## Schedule from the Web UI
+
+If your kiln-controller version includes the scheduler UI, you can schedule runs directly in the browser:
+
+- Select a profile
+- Pick a future date and time
+- Click "Schedule"
+- The UI shows what is scheduled and allows you to cancel
+
+Notes:
+- Scheduling a new run overwrites any existing scheduled run (only one scheduled run is kept).
+- Scheduling a time in the past is rejected with an error.
+- Under the hood this uses `at` and posts to the existing `/api` endpoint.
+- You can still inspect/remove jobs via `atq` / `atrm`.
+
 ## Install the scheduler
 
 This installs and starts the **at** scheduler.
 
     sudo apt-get update
-    sudo apt-get install at
+    sudo apt-get install at curl
 
 ### Verify Time Settings
 
